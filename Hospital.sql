@@ -1,5 +1,5 @@
 create table Endereco(
-    id_Endereco INT PRIMARY KEYAUTO_INCREMET,
+    id_Endereco INT PRIMARY KEY,
     cep VARCHAR (50) NOT NULL,
     logradouro VARCHAR (50) NOT NULL,
     numero VARCHAR (50),
