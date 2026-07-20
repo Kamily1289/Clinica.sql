@@ -10,7 +10,7 @@ create table Endereco(
 create table PessoaFisica (
     id_pessoa SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
+    cpf VARCHAR(14) NOT NULL,
     telefone VARCHAR(20),
     id_endereco INT NOT NULL,
 
@@ -20,7 +20,7 @@ create table PessoaFisica (
 
 create table Paciente (
     id_paciente SERIAL PRIMARY KEY,
-    id_pessoa INT NOT NULL UNIQUE,
+    id_pessoa INT NOT NULL,
 
     FOREIGN KEY (id_pessoa)
         REFERENCES PessoaFisica(id_pessoa)
@@ -28,7 +28,7 @@ create table Paciente (
 
 create table Medico (
     id_medico SERIAL PRIMARY KEY,
-    id_pessoa INT NOT NULL UNIQUE,
+    id_pessoa INT NOT NULL,
     crm VARCHAR(20) UNIQUE NOT NULL,
 
     FOREIGN KEY (id_pessoa)
