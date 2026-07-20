@@ -6,6 +6,10 @@ create table Endereco(
     bairro VARCHAR (50), 
     
 );
+create table Clinica(
+    id_clinica SERIAL PRIMARY KEY,
+    vome VARCHAR (100) NOT NULL,
+    );
 
 create table PessoaFisica (
     id_pessoa SERIAL PRIMARY KEY,
@@ -23,7 +27,10 @@ create table Paciente (
     id_pessoa INT NOT NULL,
 
     FOREIGN KEY (id_pessoa)
-        REFERENCES PessoaFisica(id_pessoa)
+        REFERENCES PessoaFisica(id_pessoa),
+    FOREIGN KEY (id_clinica)
+        REFERENCES PessoaFisica(id_clinica)
+    
 );
 
 create table Medico (
@@ -32,7 +39,9 @@ create table Medico (
     crm VARCHAR(20) UNIQUE NOT NULL,
 
     FOREIGN KEY (id_pessoa)
-        REFERENCES PessoaFisica(id_pessoa)
+        REFERENCES PessoaFisica(id_pessoa),
+     FOREIGN KEY (id_clinica)
+        REFERENCES PessoaFisica(id_clinica)
 );
 
 create table Consulta (
@@ -47,5 +56,8 @@ create table Consulta (
         REFERENCES Paciente(id_paciente),
 
     FOREIGN KEY (id_medico)
-        REFERENCES Medico(id_medico)
+        REFERENCES Medico(id_medico),
+
+     FOREIGN KEY (id_clinica)
+        REFERENCES PessoaFisica(id_clinica)
 );
